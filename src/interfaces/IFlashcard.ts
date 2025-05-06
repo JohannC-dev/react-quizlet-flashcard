@@ -59,18 +59,4 @@ export default interface FlashcardProps {
    * when passed with a ref, ref.current object will contain reference to `flipCard()` function
    */
   manualFlipRef?: React.MutableRefObject<() => void>;
-  /**
-   * Enable LaTeX rendering for content (requires additional dependencies)
-   */
-  enableLatex?: boolean;
-  /**
-   * Enable Excalidraw integration for drawings
-   */
-  enableExcalidraw?: boolean;
-  /**
-   * Additional options for content rendering
-   */
-  renderOptions?: {
-    [key: string]: any;
-  };
 }

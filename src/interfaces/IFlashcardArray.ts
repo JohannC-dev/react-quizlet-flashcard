@@ -61,20 +61,6 @@ export default interface FlashcardArrayProps {
      * Styles for the card container.
      */
     style?: React.CSSProperties;
-    /**
-     * Enable LaTeX rendering for content
-     */
-    enableLatex?: boolean;
-    /**
-     * Enable Excalidraw integration for drawings
-     */
-    enableExcalidraw?: boolean;
-    /**
-     * Additional options for content rendering
-     */
-    renderOptions?: {
-      [key: string]: any;
-    };
   }>;
   /**
    * Show or hide control arrows
@@ -140,18 +126,4 @@ export default interface FlashcardArrayProps {
    * @type boolean
    */
   cycle?: boolean;
-  /**
-   * Enable LaTeX rendering for all cards
-   */
-  enableLatex?: boolean;
-  /**
-   * Enable Excalidraw integration for all cards
-   */
-  enableExcalidraw?: boolean;
-  /**
-   * Additional options for content rendering for all cards
-   */
-  renderOptions?: {
-    [key: string]: any;
-  };
 }

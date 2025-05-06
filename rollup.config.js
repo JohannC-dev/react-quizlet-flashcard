@@ -47,9 +47,6 @@ export default [
       "react", 
       "react-dom", 
       "prop-types",
-      "@excalidraw/excalidraw",
-      "katex",
-      "react-katex"
     ],
   },
 ];

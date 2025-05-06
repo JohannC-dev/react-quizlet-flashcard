@@ -69,9 +69,6 @@
     "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
-    "@excalidraw/excalidraw": "^0.18.0",
-    "katex": "^0.16.22",
-    "react-katex": "^3.0.1",
     "tslib": "^2.8.1"
   }
 }

@@ -24,9 +24,6 @@ function FlashcardArray({
   FlashcardArrayStyle = {},
   currentCardFlipRef,
   cycle = false,
-  enableLatex = false,
-  enableExcalidraw = false,
-  renderOptions = {},
 }: FlashcardArrayProps) {
   const [cardNumber, setCardNumber] = useState(0);
   const [cardsInDisplay, setCardsInDisplay] = useState(
@@ -62,12 +59,6 @@ function FlashcardArray({
       width={card.width || "100%"}
       style={card.style}
       borderRadius={card.borderRadius}
-      enableLatex={card.enableLatex !== undefined ? card.enableLatex : enableLatex}
-      enableExcalidraw={card.enableExcalidraw !== undefined ? card.enableExcalidraw : enableExcalidraw}
-      renderOptions={{
-        ...renderOptions,
-        ...card.renderOptions,
-      }}
       onCardFlip={(state) => {
         onCardFlip(card.id, index, state);
         setIsOverFlow("hidden");
