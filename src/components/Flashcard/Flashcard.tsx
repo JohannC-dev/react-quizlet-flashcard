@@ -126,11 +126,14 @@ function Flashcard({
   return (
     <div
       className={`FlashcardWrapper ${className}`}
-      style={{
-        height: height,
-        width: width,
-        ...style,
-      }}
+      style={Object.assign(
+        {},
+        {
+          height: height,
+          width: width
+        },
+        style || {}
+      )}
     >
       <div
         className={`FlashcardWrapper__item ${

@@ -5,6 +5,7 @@ import postcss from "rollup-plugin-postcss";
 import autoprefixer from "autoprefixer";
 import typescript from "rollup-plugin-typescript2";
 import terser from "@rollup/plugin-terser";
+import json from "@rollup/plugin-json";
 
 export default [
   {
@@ -31,9 +32,24 @@ export default [
       }),
       resolve(),
       external(),
+      json(),
       terser(),
-      typescript({ useTsconfigDeclarationDir: true }),
+      typescript({ 
+        useTsconfigDeclarationDir: true,
+        tsconfigOverride: {
+          compilerOptions: {
+            skipLibCheck: true
+          }
+        }
+      }),
     ],
-    external: ["react", "react-dom", "prop-types"],
+    external: [
+      "react", 
+      "react-dom", 
+      "prop-types",
+      "@excalidraw/excalidraw",
+      "katex",
+      "react-katex"
+    ],
   },
 ];
