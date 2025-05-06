@@ -8,11 +8,11 @@ export default interface FlashcardArrayProps {
      */
     id: number;
     /**
-     * HTML string for the front of the card.
+     * Content for the front of the card.
      */
     frontHTML: string | JSX.Element;
     /**
-     * HTML string for the back of the card.
+     * Content for the back of the card.
      */
     backHTML: string | JSX.Element;
     /**
@@ -24,6 +24,10 @@ export default interface FlashcardArrayProps {
      */
     frontContentStyle?: React.CSSProperties;
     /**
+     * Additional CSS classes for the front content
+     */
+    frontContentClassName?: string;
+    /**
      * Styles for the back of the card.
      */
     backCardStyle?: React.CSSProperties;
@@ -31,6 +35,10 @@ export default interface FlashcardArrayProps {
      * Styles for the content of the back facing card.
      */
     backContentStyle?: React.CSSProperties;
+    /**
+     * Additional CSS classes for the back content
+     */
+    backContentClassName?: string;
     /**
      * Class name for each card container.
      */
@@ -53,6 +61,20 @@ export default interface FlashcardArrayProps {
      * Styles for the card container.
      */
     style?: React.CSSProperties;
+    /**
+     * Enable LaTeX rendering for content
+     */
+    enableLatex?: boolean;
+    /**
+     * Enable Excalidraw integration for drawings
+     */
+    enableExcalidraw?: boolean;
+    /**
+     * Additional options for content rendering
+     */
+    renderOptions?: {
+      [key: string]: any;
+    };
   }>;
   /**
    * Show or hide control arrows
@@ -81,6 +103,10 @@ export default interface FlashcardArrayProps {
    */
   frontContentStyle?: React.CSSProperties;
   /**
+   * Additional CSS classes for all front content
+   */
+  frontContentClassName?: string;
+  /**
    * Style of all back cards
    */
   backCardStyle?: React.CSSProperties;
@@ -88,6 +114,10 @@ export default interface FlashcardArrayProps {
    * Style of all back card content
    */
   backContentStyle?: React.CSSProperties;
+  /**
+   * Additional CSS classes for all back content
+   */
+  backContentClassName?: string;
   /**
    * Flashcard container style
    */
@@ -110,4 +140,18 @@ export default interface FlashcardArrayProps {
    * @type boolean
    */
   cycle?: boolean;
+  /**
+   * Enable LaTeX rendering for all cards
+   */
+  enableLatex?: boolean;
+  /**
+   * Enable Excalidraw integration for all cards
+   */
+  enableExcalidraw?: boolean;
+  /**
+   * Additional options for content rendering for all cards
+   */
+  renderOptions?: {
+    [key: string]: any;
+  };
 }

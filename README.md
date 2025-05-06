@@ -416,3 +416,129 @@ Give a ⭐️ if this project helped you!
 - [ ] Write Unit tests.
 - [x] More finer control.
 - [x] Write the styles with Sass
+
+## Sécurité et Personnalisation
+
+### Prévention des attaques XSS
+
+La version actuelle du module a été sécurisée pour éviter les failles XSS (Cross-Site Scripting) lorsque des utilisateurs peuvent créer leurs propres flashcards. Les changements incluent:
+
+- Suppression de l'utilisation de `dangerouslySetInnerHTML` pour afficher le contenu
+- Rendu sécurisé du contenu textuel
+- Support pour JSX Elements pour un rendu sécurisé et avancé
+
+### Personnalisation avancée
+
+De nouvelles options de personnalisation ont été ajoutées:
+
+- Support de classes CSS personnalisées pour le contenu (`frontContentClassName` et `backContentClassName`)
+- Intégration LaTeX via `enableLatex` (utilise `react-katex` et `katex`)
+- Intégration Excalidraw via `enableExcalidraw` (utilise `@excalidraw/excalidraw`)
+- Options de rendu supplémentaires via `renderOptions`
+
+### Exemple d'utilisation de LaTeX
+
+```jsx
+import { Flashcard } from 'react-quizlet-flashcard';
+import 'katex/dist/katex.min.css'; // Assurez-vous d'importer les styles KaTeX
+
+function App() {
+  return (
+    <Flashcard
+      frontHTML="Calculez la dérivée de $f(x) = x^2 + 3x + 2$"
+      backHTML="$$f'(x) = 2x + 3$$"
+      frontContentClassName="question"
+      backContentClassName="answer"
+      enableLatex={true}
+      height="300px"
+      width="400px"
+    />
+  );
+}
+```
+
+### Exemple d'utilisation d'Excalidraw
+
+Pour utiliser Excalidraw, vous devez d'abord installer les dépendances nécessaires:
+
+```bash
+npm install @excalidraw/excalidraw
+# ou
+yarn add @excalidraw/excalidraw
+```
+
+Ensuite, vous pouvez créer une flashcard avec un schéma Excalidraw:
+
+```jsx
+import { Flashcard } from 'react-quizlet-flashcard';
+
+function App() {
+  // Exemple de données Excalidraw (peut être un JSON stocké sous forme de chaîne)
+  const diagramData = JSON.stringify({
+    elements: [
+      {
+        type: "rectangle",
+        x: 100,
+        y: 100,
+        width: 200,
+        height: 100,
+        strokeColor: "#000000",
+        backgroundColor: "transparent",
+        fillStyle: "hachure",
+        strokeWidth: 1,
+        roughness: 1
+      }
+    ],
+    appState: {
+      viewBackgroundColor: "#ffffff"
+    }
+  });
+
+  return (
+    <Flashcard
+      frontHTML="Observez ce schéma:"
+      backHTML={diagramData}
+      enableExcalidraw={true}
+      renderOptions={{
+        excalidrawProps: {
+          // Props supplémentaires pour personnaliser Excalidraw
+          gridModeEnabled: true,
+        }
+      }}
+      height="400px"
+      width="500px"
+    />
+  );
+}
+```
+
+### Options de rendu avancées
+
+Le composant accepte un objet `renderOptions` qui permet de personnaliser le rendu:
+
+```jsx
+<Flashcard
+  frontHTML="$E = mc^2$"
+  backHTML="L'équation d'Einstein"
+  enableLatex={true}
+  renderOptions={{
+    // Options pour le rendu LaTeX
+    displayMode: true,  // Force l'affichage en mode bloc
+    
+    // Options pour Excalidraw
+    excalidrawProps: {
+      gridModeEnabled: true,
+      theme: "dark",
+      zenModeEnabled: true,
+    }
+  }}
+/>
+```
+
+Pour installer les dépendances nécessaires, exécutez:
+
+```bash
+npm install katex react-katex @excalidraw/excalidraw
+# ou
+yarn add katex react-katex @excalidraw/excalidraw
+```

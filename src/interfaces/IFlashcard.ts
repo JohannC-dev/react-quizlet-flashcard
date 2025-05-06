@@ -1,6 +1,6 @@
 export default interface FlashcardProps {
   /**
-   * HTML string or JSX element to be displayed on the front of the card
+   * Content to be displayed on the front of the card (string or JSX element)
    */
   frontHTML: string | JSX.Element;
   /**
@@ -12,7 +12,11 @@ export default interface FlashcardProps {
    */
   frontContentStyle?: React.CSSProperties;
   /**
-   * HTML string or JSX element to be displayed on the back of the card
+   * Additional CSS classes for the front content
+   */
+  frontContentClassName?: string;
+  /**
+   * Content to be displayed on the back of the card (string or JSX element)
    */
   backHTML: string | JSX.Element;
   /**
@@ -23,6 +27,10 @@ export default interface FlashcardProps {
    * CSS styles to be applied to the content of the back side of the card
    */
   backContentStyle?: React.CSSProperties;
+  /**
+   * Additional CSS classes for the back content
+   */
+  backContentClassName?: string;
   /**
    * CSS class to be applied to the wrapper div
    */
@@ -51,4 +59,18 @@ export default interface FlashcardProps {
    * when passed with a ref, ref.current object will contain reference to `flipCard()` function
    */
   manualFlipRef?: React.MutableRefObject<() => void>;
+  /**
+   * Enable LaTeX rendering for content (requires additional dependencies)
+   */
+  enableLatex?: boolean;
+  /**
+   * Enable Excalidraw integration for drawings
+   */
+  enableExcalidraw?: boolean;
+  /**
+   * Additional options for content rendering
+   */
+  renderOptions?: {
+    [key: string]: any;
+  };
 }

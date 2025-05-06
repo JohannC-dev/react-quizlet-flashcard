@@ -16,12 +16,17 @@ function FlashcardArray({
   onCardFlip = () => {},
   frontCardStyle = {},
   frontContentStyle = {},
+  frontContentClassName = "",
   backCardStyle = {},
   backContentStyle = {},
+  backContentClassName = "",
   forwardRef = { current: null },
   FlashcardArrayStyle = {},
   currentCardFlipRef,
   cycle = false,
+  enableLatex = false,
+  enableExcalidraw = false,
+  renderOptions = {},
 }: FlashcardArrayProps) {
   const [cardNumber, setCardNumber] = useState(0);
   const [cardsInDisplay, setCardsInDisplay] = useState(
@@ -48,12 +53,21 @@ function FlashcardArray({
       }
       frontCardStyle={{ ...card.frontCardStyle, ...frontCardStyle }}
       frontContentStyle={{ ...card.frontContentStyle, ...frontContentStyle }}
+      frontContentClassName={`${card.frontContentClassName || ""} ${frontContentClassName}`}
       backCardStyle={{ ...card.backCardStyle, ...backCardStyle }}
       backContentStyle={{ ...card.backContentStyle, ...backContentStyle }}
+      backContentClassName={`${card.backContentClassName || ""} ${backContentClassName}`}
       className={card.className}
       height={card.height || "100%"}
       width={card.width || "100%"}
       style={card.style}
+      borderRadius={card.borderRadius}
+      enableLatex={card.enableLatex !== undefined ? card.enableLatex : enableLatex}
+      enableExcalidraw={card.enableExcalidraw !== undefined ? card.enableExcalidraw : enableExcalidraw}
+      renderOptions={{
+        ...renderOptions,
+        ...card.renderOptions,
+      }}
       onCardFlip={(state) => {
         onCardFlip(card.id, index, state);
         setIsOverFlow("hidden");
